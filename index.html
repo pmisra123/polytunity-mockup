@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polytunity — Homepage Design Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─── RESET & BASE ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: #f0ede8; font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+  /* ─── CHOOSER BAR ─── */
+  .chooser {
+    position: sticky; top: 0; z-index: 100;
+    background: #1a1a18; border-bottom: 1px solid #333;
+    padding: 0 24px;
+    display: flex; align-items: center; gap: 0;
+  }
+  .chooser-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: #666;
+    padding-right: 20px; border-right: 1px solid #333;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .chooser-tabs { display: flex; gap: 0; flex: 1; }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 400; letter-spacing: .04em;
+    color: #666; padding: 16px 20px;
+    border-right: 1px solid #222;
+    transition: all .2s; white-space: nowrap;
+    position: relative;
+  }
+  .tab-btn:hover { color: #ccc; background: #222; }
+  .tab-btn.active { color: #fff; }
+  .tab-btn.active::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: #c8a96e;
+  }
+  .chooser-note {
+    font-size: 11px; color: #444; padding-left: 20px;
+    border-left: 1px solid #333; white-space: nowrap; flex-shrink: 0;
+    font-style: italic;
+  }
+
+  /* ─── DESIGN PANELS ─── */
+  .design-panel { display: none; }
+  .design-panel.active { display: block; }
+
+  /* ══════════════════════════════════════
+     DESIGN 1 — INSTITUTIONAL MINIMAL
+  ══════════════════════════════════════ */
+  .d1 { background: #fafaf8; font-family: 'DM Sans', sans-serif; }
+
+  .d1-nav {
+    border-bottom: 1px solid #e0ddd8;
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fafaf8;
+  }
+  .d1-wordmark {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px; font-weight: 500; letter-spacing: .25em;
+    text-transform: uppercase; color: #1a1a18;
+    padding: 18px 0;
+  }
+  .d1-navlinks { display: flex; gap: 28px; align-items: center; }
+  .d1-navlinks a {
+    font-size: 12px; color: #888; text-decoration: none;
+    letter-spacing: .04em; transition: color .15s;
+  }
+  .d1-navlinks a:hover { color: #1a1a18; }
+  .d1-navlinks .d1-subscribe {
+    font-size: 11px; font-weight: 500; letter-spacing: .08em;
+    color: #1a1a18; border: 1px solid #1a1a18; padding: 6px 14px;
+    text-transform: uppercase; transition: all .15s;
+  }
+  .d1-navlinks .d1-subscribe:hover { background: #1a1a18; color: #fafaf8; }
+
+  .d1-hero {
+    padding: 64px 48px 48px;
+    border-bottom: 1px solid #e0ddd8;
+    max-width: 760px;
+  }
+  .d1-eyebrow {
+    font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+    color: #999; margin-bottom: 16px;
+  }
+  .d1-hero h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 38px; font-weight: 400; line-height: 1.2;
+    color: #1a1a18; margin-bottom: 16px;
+  }
+  .d1-hero-meta { font-size: 13px; color: #888; }
+
+  .d1-subscribe-bar {
+    background: #f2efe9; border-bottom: 1px solid #e0ddd8;
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .d1-subscribe-bar p { font-size: 13px; color: #666; }
+  .d1-subscribe-bar p strong { color: #1a1a18; }
+  .d1-sub-form { display: flex; gap: 8px; flex-shrink: 0; }
+  .d1-sub-form input {
+    border: 1px solid #ccc; background: #fff; padding: 8px 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: #1a1a18;
+    outline: none; width: 220px;
+  }
+  .d1-sub-form button {
+    background: #1a1a18; color: #fafaf8; border: none; cursor: pointer;
+    padding: 8px 18px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  .d1-body { padding: 0 48px; max-width: 1200px; }
+
+  .d1-section { border-bottom: 1px solid #e0ddd8; padding: 40px 0; }
+  .d1-section-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px;
+  }
+  .d1-section-title {
+    font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #888;
+  }
+  .d1-section-more {
+    font-size: 12px; color: #888; text-decoration: none; letter-spacing: .04em;
+  }
+  .d1-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .d1-post {
+    padding: 0 24px 0 0; border-right: 1px solid #e0ddd8;
+  }
+  .d1-post:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+  .d1-post:nth-child(2) { padding-left: 24px; }
+  .d1-post-type {
+    font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+    color: #bbb; margin-bottom: 8px;
+  }
+  .d1-post h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px; font-weight: 400; line-height: 1.3;
+    color: #1a1a18; margin-bottom: 8px;
+  }
+  .d1-post-meta { font-size: 11px; color: #aaa; }
+
+  .d1-bottom { display: grid; grid-template-columns: 2fr 1fr; gap: 0; padding: 40px 0; }
+  .d1-most-read { padding-right: 48px; border-right: 1px solid #e0ddd8; }
+  .d1-most-read h4 {
+    font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+    color: #888; margin-bottom: 16px;
+  }
+  .d1-mr-item {
+    display: flex; gap: 16px; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px solid #ede9e3;
+  }
+  .d1-mr-item:last-child { border-bottom: none; }
+  .d1-mr-num { font-size: 11px; color: #ccc; min-width: 16px; }
+  .d1-mr-title {
+    font-family: 'EB Garamond', serif; font-size: 16px; color: #1a1a18; line-height: 1.3;
+  }
+  .d1-mr-meta { font-size: 11px; color: #aaa; margin-left: auto; flex-shrink: 0; }
+  .d1-media { padding-left: 48px; }
+  .d1-media h4 {
+    font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+    color: #888; margin-bottom: 16px;
+  }
+  .d1-media-item { padding: 8px 0; border-bottom: 1px solid #ede9e3; }
+  .d1-media-item:last-child { border-bottom: none; }
+  .d1-media-item p { font-size: 12px; color: #555; line-height: 1.4; }
+  .d1-media-item span { font-size: 10px; color: #bbb; }
+
+  /* ══════════════════════════════════════
+     DESIGN 2 — EDITORIAL JOURNAL
+  ══════════════════════════════════════ */
+  .d2 { background: #f5f0e8; font-family: 'Libre Baskerville', serif; }
+
+  .d2-topbar {
+    background: #1c1a14; padding: 8px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .d2-topbar-left { font-size: 11px; color: #888; letter-spacing: .06em; }
+  .d2-topbar-right { display: flex; gap: 20px; }
+  .d2-topbar-right a { font-size: 11px; color: #666; text-decoration: none; }
+
+  .d2-masthead {
+    text-align: center; padding: 48px 48px 32px;
+    border-bottom: 3px double #c4b99a;
+  }
+  .d2-issue { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #b09a6e; margin-bottom: 12px; }
+  .d2-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 700; letter-spacing: -.02em;
+    color: #1c1a14; margin-bottom: 8px; line-height: 1;
+  }
+  .d2-subtitle {
+    font-family: 'Libre Baskerville', serif; font-style: italic;
+    font-size: 16px; color: #7a6f5a; margin-bottom: 24px;
+  }
+  .d2-nav {
+    display: flex; justify-content: center; gap: 28px;
+    padding-top: 20px; border-top: 1px solid #d4c9b0;
+  }
+  .d2-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: #7a6f5a; text-decoration: none;
+  }
+
+  .d2-subscribe-strip {
+    background: #1c1a14; padding: 14px 48px;
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+  }
+  .d2-subscribe-strip p { font-size: 13px; color: #a09070; font-style: italic; }
+  .d2-subscribe-strip button {
+    background: #c8a96e; color: #1c1a14; border: none; cursor: pointer;
+    padding: 8px 20px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  .d2-body { padding: 40px 48px; max-width: 1200px; margin: 0 auto; }
+
+  .d2-featured {
+    display: grid; grid-template-columns: 3fr 2fr; gap: 40px;
+    border-bottom: 1px solid #d4c9b0; padding-bottom: 40px; margin-bottom: 40px;
+  }
+  .d2-featured-main { }
+  .d2-feat-img {
+    width: 100%; height: 240px; background: #d4c9b0;
+    margin-bottom: 16px; position: relative; overflow: hidden;
+  }
+  .d2-feat-img-inner {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #c4b48a 0%, #9a8a6a 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .d2-feat-img-text { font-size: 11px; letter-spacing: .1em; color: #f5f0e8; opacity: .6; text-transform: uppercase; }
+  .d2-feat-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #b09a6e; margin-bottom: 8px;
+  }
+  .d2-feat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600; line-height: 1.25;
+    color: #1c1a14; margin-bottom: 10px;
+  }
+  .d2-feat-deck {
+    font-size: 14px; line-height: 1.6; color: #5a5040; font-style: italic;
+    margin-bottom: 10px;
+  }
+  .d2-feat-byline { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #a09070; }
+
+  .d2-sidebar { display: flex; flex-direction: column; gap: 0; }
+  .d2-sidebar-item {
+    padding: 16px 0; border-bottom: 1px solid #d4c9b0;
+  }
+  .d2-sidebar-item:first-child { padding-top: 0; }
+  .d2-sidebar-item:last-child { border-bottom: none; }
+  .d2-sidebar-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #b09a6e; margin-bottom: 6px;
+  }
+  .d2-sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 400; line-height: 1.3;
+    color: #1c1a14; margin-bottom: 4px;
+  }
+  .d2-sidebar-byline { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #a09070; }
+
+  .d2-section-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: #888; margin-bottom: 20px; padding-bottom: 8px;
+    border-bottom: 1px solid #d4c9b0;
+    display: flex; justify-content: space-between;
+  }
+  .d2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .d2-grid-item { }
+  .d2-grid-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px; letter-spacing: .15em; text-transform: uppercase;
+    color: #b09a6e; margin-bottom: 6px;
+  }
+  .d2-grid-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; line-height: 1.3; color: #1c1a14; margin-bottom: 6px;
+  }
+  .d2-grid-byline { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #a09070; }
+
+  /* ══════════════════════════════════════
+     DESIGN 3 — IDEAS MAGAZINE
+  ══════════════════════════════════════ */
+  .d3 { background: #fff; font-family: 'Space Grotesk', sans-serif; }
+
+  .d3-topstrip {
+    background: #0f3460; padding: 6px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .d3-topstrip p { font-size: 11px; color: #8ba3c7; }
+  .d3-topstrip button {
+    font-size: 10px; font-weight: 600; letter-spacing: .08em;
+    background: #e8c547; color: #0f3460; border: none; cursor: pointer;
+    padding: 4px 12px; text-transform: uppercase;
+  }
+
+  .d3-nav {
+    padding: 0 40px; border-bottom: 2px solid #0f3460;
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fff;
+  }
+  .d3-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; letter-spacing: -.03em;
+    color: #0f3460; padding: 14px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .d3-wordmark span {
+    background: #0f3460; color: #e8c547;
+    font-size: 9px; font-weight: 700; letter-spacing: .1em;
+    padding: 3px 7px; text-transform: uppercase; margin-left: 4px;
+  }
+  .d3-navlinks { display: flex; gap: 0; }
+  .d3-navlinks a {
+    font-size: 12px; font-weight: 500; letter-spacing: .04em;
+    color: #333; text-decoration: none; padding: 16px 16px;
+    border-left: 1px solid #eee;
+    transition: all .15s;
+  }
+  .d3-navlinks a:hover { background: #f5f5f5; }
+  .d3-navlinks .active-link { color: #0f3460; font-weight: 600; }
+
+  .d3-hero {
+    display: grid; grid-template-columns: 3fr 2fr; gap: 0;
+    border-bottom: 2px solid #0f3460;
+  }
+  .d3-hero-main {
+    padding: 32px 40px 32px 40px;
+    border-right: 2px solid #0f3460;
+  }
+  .d3-hero-tag {
+    display: inline-block; background: #0f3460; color: #e8c547;
+    font-size: 9px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; padding: 4px 10px; margin-bottom: 14px;
+  }
+  .d3-hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -.02em;
+    color: #0f3460; margin-bottom: 12px;
+  }
+  .d3-hero-deck {
+    font-size: 15px; line-height: 1.6; color: #555; margin-bottom: 12px;
+  }
+  .d3-hero-meta { font-size: 12px; color: #999; }
+
+  .d3-hero-sidebar { padding: 0; }
+  .d3-hero-side-item {
+    padding: 20px 24px; border-bottom: 1px solid #eee;
+  }
+  .d3-hero-side-item:last-child { border-bottom: none; }
+  .d3-side-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: #0f3460; margin-bottom: 6px;
+  }
+  .d3-side-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 600; line-height: 1.3;
+    color: #1a1a18; margin-bottom: 4px;
+  }
+  .d3-side-meta { font-size: 11px; color: #999; }
+
+  .d3-subscribe-bar {
+    background: #e8c547; padding: 12px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .d3-subscribe-bar p {
+    font-size: 13px; font-weight: 500; color: #0f3460;
+  }
+  .d3-subscribe-bar button {
+    background: #0f3460; color: #e8c547; border: none; cursor: pointer;
+    padding: 8px 20px; font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  }
+
+  .d3-body { padding: 32px 40px; }
+  .d3-section { margin-bottom: 40px; }
+  .d3-section-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 10px; border-bottom: 2px solid #0f3460; margin-bottom: 16px;
+  }
+  .d3-section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: #0f3460;
+  }
+  .d3-section-more { font-size: 12px; color: #999; text-decoration: none; }
+  .d3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #eee; }
+  .d3-card { background: #fff; padding: 16px; }
+  .d3-card-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: #0f3460; margin-bottom: 8px;
+  }
+  .d3-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 600; line-height: 1.3;
+    color: #1a1a18; margin-bottom: 6px;
+  }
+  .d3-card-by { font-size: 11px; color: #999; }
+
+  .d3-bottom { display: grid; grid-template-columns: 2fr 1fr; gap: 2px; background: #eee; margin-top: 2px; }
+  .d3-mr { background: #fff; padding: 16px; }
+  .d3-mr-title {
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: #0f3460;
+    margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #0f3460;
+  }
+  .d3-mr-item { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid #eee; align-items: baseline; }
+  .d3-mr-item:last-child { border-bottom: none; }
+  .d3-mr-n { font-size: 20px; font-weight: 700; color: #e8c547; min-width: 28px; line-height: 1; }
+  .d3-mr-text { font-size: 13px; font-weight: 500; color: #1a1a18; line-height: 1.3; }
+  .d3-appearances { background: #0f3460; padding: 16px; }
+  .d3-app-title {
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: #e8c547;
+    margin-bottom: 12px;
+  }
+  .d3-app-item { padding: 6px 0; border-bottom: 1px solid #1a3a6a; }
+  .d3-app-item:last-child { border-bottom: none; }
+  .d3-app-item p { font-size: 12px; color: #8ba3c7; line-height: 1.4; }
+  .d3-app-item span { font-size: 10px; color: #5a7aaa; }
+
+  /* ══════════════════════════════════════
+     DESIGN 4 — INTELLECTUAL STUDIO
+  ══════════════════════════════════════ */
+  .d4 { background: #f7f4ef; font-family: 'DM Sans', sans-serif; }
+
+  .d4-nav {
+    padding: 20px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #e4ded4;
+    background: #f7f4ef;
+  }
+  .d4-nav-left { display: flex; align-items: center; gap: 32px; }
+  .d4-author-block { display: flex; align-items: center; gap: 14px; }
+  .d4-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #2d4a3e;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'EB Garamond', serif; font-size: 15px; color: #c8d8c0;
+  }
+  .d4-author-info { }
+  .d4-author-name {
+    font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; color: #1a1a18;
+  }
+  .d4-author-role { font-size: 11px; color: #999; }
+  .d4-navlinks { display: flex; gap: 24px; }
+  .d4-navlinks a { font-size: 12px; color: #777; text-decoration: none; }
+  .d4-sub-btn {
+    font-size: 11px; font-weight: 500; letter-spacing: .06em;
+    border: 1.5px solid #2d4a3e; color: #2d4a3e;
+    padding: 7px 18px; background: none; cursor: pointer;
+    text-transform: uppercase; transition: all .15s;
+  }
+  .d4-sub-btn:hover { background: #2d4a3e; color: #f7f4ef; }
+
+  .d4-bio-strip {
+    padding: 36px 56px 32px;
+    border-bottom: 1px solid #e4ded4;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  }
+  .d4-bio-text { }
+  .d4-bio-text p {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px; line-height: 1.6; color: #2a2520;
+    font-style: italic;
+  }
+  .d4-bio-links { }
+  .d4-bio-links-title {
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #999; margin-bottom: 12px;
+  }
+  .d4-bio-link-item { padding: 8px 0; border-bottom: 1px solid #e4ded4; }
+  .d4-bio-link-item:last-child { border-bottom: none; }
+  .d4-bio-link-item p { font-size: 13px; color: #444; }
+  .d4-bio-link-item span { font-size: 11px; color: #bbb; }
+
+  .d4-subscribe-bar {
+    background: #2d4a3e; padding: 14px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .d4-subscribe-bar p { font-size: 13px; color: #a8c4a0; font-style: italic; }
+  .d4-subscribe-bar p strong { color: #c8d8c0; }
+  .d4-subscribe-bar button {
+    background: #c8d8c0; color: #2d4a3e; border: none; cursor: pointer;
+    padding: 8px 20px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  .d4-body { padding: 0 56px 48px; }
+
+  .d4-pinned {
+    padding: 36px 0; border-bottom: 1px solid #e4ded4;
+  }
+  .d4-pinned-label {
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #999; margin-bottom: 20px;
+  }
+  .d4-pinned-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 32px; font-weight: 400; line-height: 1.25;
+    color: #1a1a18; margin-bottom: 10px; max-width: 680px;
+  }
+  .d4-pinned-deck {
+    font-size: 15px; color: #666; line-height: 1.6; max-width: 600px; margin-bottom: 14px;
+  }
+  .d4-pinned-cta {
+    font-size: 12px; font-weight: 500; letter-spacing: .06em;
+    text-transform: uppercase; color: #2d4a3e; text-decoration: none;
+    border-bottom: 1.5px solid #2d4a3e; padding-bottom: 2px;
+  }
+
+  .d4-section { padding: 32px 0; border-bottom: 1px solid #e4ded4; }
+  .d4-section-head {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;
+  }
+  .d4-section-title {
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: #999;
+  }
+  .d4-section-more { font-size: 12px; color: #999; text-decoration: none; }
+  .d4-list { display: flex; flex-direction: column; gap: 0; }
+  .d4-list-item {
+    display: grid; grid-template-columns: 1fr auto;
+    padding: 14px 0; border-bottom: 1px solid #ece6de; align-items: baseline;
+  }
+  .d4-list-item:last-child { border-bottom: none; }
+  .d4-item-type {
+    font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+    color: #c4a882; margin-bottom: 4px;
+  }
+  .d4-item-title {
+    font-family: 'EB Garamond', serif; font-size: 19px; color: #1a1a18; line-height: 1.3;
+  }
+  .d4-item-meta { font-size: 11px; color: #bbb; text-align: right; }
+
+  .d4-bottom { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding: 32px 0; }
+  .d4-mr h4 {
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #999; margin-bottom: 14px;
+  }
+  .d4-mr-item { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid #ece6de; align-items: baseline; }
+  .d4-mr-item:last-child { border-bottom: none; }
+  .d4-mr-n { font-size: 10px; color: #ccc; min-width: 14px; }
+  .d4-mr-title { font-family: 'EB Garamond', serif; font-size: 17px; color: #1a1a18; line-height: 1.3; }
+  .d4-appearances h4 {
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #999; margin-bottom: 14px;
+  }
+  .d4-app-item { padding: 8px 0; border-bottom: 1px solid #ece6de; }
+  .d4-app-item:last-child { border-bottom: none; }
+  .d4-app-item p { font-size: 13px; color: #555; }
+  .d4-app-item span { font-size: 10px; color: #bbb; }
+
+  /* ─── FOOTER NOTE ─── */
+  .footer-note {
+    background: #1a1a18; color: #666; text-align: center;
+    padding: 16px; font-size: 11px; letter-spacing: .06em;
+  }
+  .footer-note strong { color: #c8a96e; }
+</style>
+</head>
+<body>
+
+<!-- ─── CHOOSER BAR ─── -->
+<div class="chooser">
+  <span class="chooser-label">Polytunity — Homepage designs</span>
+  <div class="chooser-tabs">
+    <button class="tab-btn active" onclick="switchDesign(1, this)">01 — Institutional minimal</button>
+    <button class="tab-btn" onclick="switchDesign(2, this)">02 — Editorial journal</button>
+    <button class="tab-btn" onclick="switchDesign(3, this)">03 — Ideas magazine</button>
+    <button class="tab-btn" onclick="switchDesign(4, this)">04 — Intellectual studio</button>
+  </div>
+  <span class="chooser-note">Click to compare designs</span>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     DESIGN 1 — INSTITUTIONAL MINIMAL
+══════════════════════════════════════ -->
+<div class="design-panel d1 active" id="panel-1">
+
+  <nav class="d1-nav">
+    <div class="d1-wordmark">Polytunity</div>
+    <div class="d1-navlinks">
+      <a href="#">Essays</a>
+      <a href="#">Gen-Z series</a>
+      <a href="#">Global resonance</a>
+      <a href="#">About</a>
+      <a href="#" class="d1-subscribe">Subscribe free</a>
+    </div>
+  </nav>
+
+  <div class="d1-hero">
+    <p class="d1-eyebrow">Pinned · Start here</p>
+    <h1>What is polytunity? A reader's guide to this Substack</h1>
+    <p class="d1-hero-meta">Yuen Yuen Ang · Johns Hopkins University · The entry point for new readers</p>
+  </div>
+
+  <div class="d1-subscribe-bar">
+    <p>Join <strong>1,000+ readers in 98 countries</strong> — economists, policymakers, scholars, and globally curious minds.</p>
+    <div class="d1-sub-form">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe free</button>
+    </div>
+  </div>
+
+  <div class="d1-body">
+
+    <div class="d1-section">
+      <div class="d1-section-head">
+        <span class="d1-section-title">Yuen's essays</span>
+        <a href="#" class="d1-section-more">View all →</a>
+      </div>
+      <div class="d1-posts">
+        <div class="d1-post">
+          <p class="d1-post-type">Deposit</p>
+          <h3>From polycrisis to polytunity</h3>
+          <p class="d1-post-meta">Yuen Yuen Ang · March 2026</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Deposit</p>
+          <h3>AIM for a new political economy</h3>
+          <p class="d1-post-meta">Yuen Yuen Ang · March 2026</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Deposit</p>
+          <h3>Polytunity in the post-2025 world order</h3>
+          <p class="d1-post-meta">Yuen Yuen Ang · February 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d1-section">
+      <div class="d1-section-head">
+        <span class="d1-section-title">Gen-Z series</span>
+        <a href="#" class="d1-section-more">View all →</a>
+      </div>
+      <div class="d1-posts">
+        <div class="d1-post">
+          <p class="d1-post-type">Student essay</p>
+          <h3>Three-year plan meets the polycrisis</h3>
+          <p class="d1-post-meta">Ambre Clermont · April 2026</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Student essay</p>
+          <h3>Why immigration is complex, not complicated</h3>
+          <p class="d1-post-meta">Lily Yan · April 2026</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Student essay</p>
+          <h3>A tale of two kitchens</h3>
+          <p class="d1-post-meta">Joy Yu · April 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d1-section">
+      <div class="d1-section-head">
+        <span class="d1-section-title">Global resonance</span>
+        <a href="#" class="d1-section-more">View all →</a>
+      </div>
+      <div class="d1-posts">
+        <div class="d1-post">
+          <p class="d1-post-type">Amplification</p>
+          <h3>Albert Hirschman in the age of polytunity</h3>
+          <p class="d1-post-meta">Polytunity team · 2025</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Guest essay</p>
+          <h3>De-mechanizing &amp; de-colonizing</h3>
+          <p class="d1-post-meta">Guest contributor · 2026</p>
+        </div>
+        <div class="d1-post">
+          <p class="d1-post-type">Translation</p>
+          <h3>From polytunity to poliunidad</h3>
+          <p class="d1-post-meta">Margarita Cedeño · 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d1-bottom">
+      <div class="d1-most-read">
+        <h4>Most read</h4>
+        <div class="d1-mr-item">
+          <span class="d1-mr-num">1</span>
+          <span class="d1-mr-title">The global polytunity</span>
+          <span class="d1-mr-meta">Project Syndicate</span>
+        </div>
+        <div class="d1-mr-item">
+          <span class="d1-mr-num">2</span>
+          <span class="d1-mr-title">From polycrisis to polytunity</span>
+          <span class="d1-mr-meta">Essay</span>
+        </div>
+        <div class="d1-mr-item">
+          <span class="d1-mr-num">3</span>
+          <span class="d1-mr-title">AIM for a new political economy</span>
+          <span class="d1-mr-meta">Essay</span>
+        </div>
+        <div class="d1-mr-item">
+          <span class="d1-mr-num">4</span>
+          <span class="d1-mr-title">Three-year plan meets the polycrisis</span>
+          <span class="d1-mr-meta">Gen-Z series</span>
+        </div>
+      </div>
+      <div class="d1-media">
+        <h4>Media &amp; appearances</h4>
+        <div class="d1-media-item">
+          <p>UNDP Global Leadership Retreat, South Africa</p>
+          <span>Keynote · November 2024</span>
+        </div>
+        <div class="d1-media-item">
+          <p>The Global Polytunity — Project Syndicate</p>
+          <span>Essay · October 2025</span>
+        </div>
+        <div class="d1-media-item">
+          <p>AIM — Oxford Development Studies</p>
+          <span>Journal · 2026</span>
+        </div>
+        <div class="d1-media-item">
+          <p>Development Studies Association Conference</p>
+          <span>Keynote · June 2025</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     DESIGN 2 — EDITORIAL JOURNAL
+══════════════════════════════════════ -->
+<div class="design-panel d2" id="panel-2">
+
+  <div class="d2-topbar">
+    <span class="d2-topbar-left">Johns Hopkins University · SNF Agora Institute · The Polytunity Project</span>
+    <div class="d2-topbar-right">
+      <a href="#">About</a>
+      <a href="#">Archive</a>
+      <a href="#">Team</a>
+    </div>
+  </div>
+
+  <div class="d2-masthead">
+    <p class="d2-issue">Est. 2025 · Global political economy</p>
+    <h1 class="d2-title">Polytunity</h1>
+    <p class="d2-subtitle">Real transformation is only possible when the old order breaks down</p>
+    <div class="d2-nav">
+      <a href="#">Essays</a>
+      <a href="#">Gen-Z series</a>
+      <a href="#">Global resonance</a>
+      <a href="#">AI &amp; disruption</a>
+      <a href="#">Archive</a>
+    </div>
+  </div>
+
+  <div class="d2-subscribe-strip">
+    <p>Join scholars, policymakers, and changemakers in 98 countries — free to read</p>
+    <button>Subscribe free</button>
+  </div>
+
+  <div class="d2-body">
+
+    <div class="d2-featured">
+      <div class="d2-featured-main">
+        <div class="d2-feat-img">
+          <div class="d2-feat-img-inner">
+            <span class="d2-feat-img-text">Cover image</span>
+          </div>
+        </div>
+        <p class="d2-feat-kicker">Start here · Pinned</p>
+        <h2 class="d2-feat-title">What is polytunity? A reader's guide to this Substack</h2>
+        <p class="d2-feat-deck">The entry point for new readers — what we believe, who we are, and where to begin. Polytunity reframes global disruption as a once-in-a-generation opening for deep transformation.</p>
+        <p class="d2-feat-byline">By Yuen Yuen Ang · Johns Hopkins University</p>
+      </div>
+      <div class="d2-sidebar">
+        <div class="d2-sidebar-item">
+          <p class="d2-sidebar-kicker">Latest essay</p>
+          <h3 class="d2-sidebar-title">Polytunity in the post-2025 world order</h3>
+          <p class="d2-sidebar-byline">Yuen Yuen Ang · February 2026</p>
+        </div>
+        <div class="d2-sidebar-item">
+          <p class="d2-sidebar-kicker">Gen-Z series</p>
+          <h3 class="d2-sidebar-title">Three-year plan meets the polycrisis</h3>
+          <p class="d2-sidebar-byline">Ambre Clermont · April 2026</p>
+        </div>
+        <div class="d2-sidebar-item">
+          <p class="d2-sidebar-kicker">Global resonance</p>
+          <h3 class="d2-sidebar-title">From polytunity to poliunidad</h3>
+          <p class="d2-sidebar-byline">Margarita Cedeño · 2026</p>
+        </div>
+        <div class="d2-sidebar-item">
+          <p class="d2-sidebar-kicker">Most read</p>
+          <h3 class="d2-sidebar-title">The global polytunity</h3>
+          <p class="d2-sidebar-byline">Project Syndicate · October 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d2-section-title">
+      <span>Gen-Z series — students on the polycrisis</span>
+      <span>View all →</span>
+    </div>
+    <div class="d2-grid">
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Student essay</p>
+        <h3 class="d2-grid-title">Three-year plan meets the polycrisis</h3>
+        <p class="d2-grid-byline">Ambre Clermont · April 2026</p>
+      </div>
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Student essay</p>
+        <h3 class="d2-grid-title">Why immigration is complex, not complicated</h3>
+        <p class="d2-grid-byline">Lily Yan · April 2026</p>
+      </div>
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Student essay</p>
+        <h3 class="d2-grid-title">A tale of two kitchens</h3>
+        <p class="d2-grid-byline">Joy Yu · April 2026</p>
+      </div>
+    </div>
+
+    <div class="d2-section-title">
+      <span>Global resonance — how others extend polytunity</span>
+      <span>View all →</span>
+    </div>
+    <div class="d2-grid">
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Amplification</p>
+        <h3 class="d2-grid-title">Albert Hirschman in the age of polytunity</h3>
+        <p class="d2-grid-byline">Polytunity team · 2025</p>
+      </div>
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Guest essay</p>
+        <h3 class="d2-grid-title">De-mechanizing &amp; de-colonizing</h3>
+        <p class="d2-grid-byline">Guest contributor · 2026</p>
+      </div>
+      <div class="d2-grid-item">
+        <p class="d2-grid-kicker">Translation</p>
+        <h3 class="d2-grid-title">From polytunity to poliunidad</h3>
+        <p class="d2-grid-byline">Margarita Cedeño · 2026</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     DESIGN 3 — IDEAS MAGAZINE
+══════════════════════════════════════ -->
+<div class="design-panel d3" id="panel-3">
+
+  <div class="d3-topstrip">
+    <p>Join 1,000+ readers in 98 countries — free to subscribe</p>
+    <button>Subscribe free →</button>
+  </div>
+
+  <nav class="d3-nav">
+    <div class="d3-wordmark">
+      POLYTUNITY
+      <span>New</span>
+    </div>
+    <div class="d3-navlinks">
+      <a href="#">Essays</a>
+      <a href="#">Gen-Z</a>
+      <a href="#">Global resonance</a>
+      <a href="#">AI series</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+  <div class="d3-hero">
+    <div class="d3-hero-main">
+      <span class="d3-hero-tag">Pinned · Start here</span>
+      <h1 class="d3-hero-title">What is polytunity? A reader's guide to this Substack</h1>
+      <p class="d3-hero-deck">Polytunity reframes the current era of global disruption as a once-in-a-generation opening for deep, constructive transformation — not paralysis. The entry point for every new reader.</p>
+      <p class="d3-hero-meta">Yuen Yuen Ang · Johns Hopkins University</p>
+    </div>
+    <div class="d3-hero-sidebar">
+      <div class="d3-hero-side-item">
+        <p class="d3-side-tag">Latest essay</p>
+        <p class="d3-side-title">Polytunity in the post-2025 world order</p>
+        <p class="d3-side-meta">Yuen Yuen Ang · February 2026</p>
+      </div>
+      <div class="d3-hero-side-item">
+        <p class="d3-side-tag">Gen-Z series</p>
+        <p class="d3-side-title">Three-year plan meets the polycrisis</p>
+        <p class="d3-side-meta">Ambre Clermont · April 2026</p>
+      </div>
+      <div class="d3-hero-side-item">
+        <p class="d3-side-tag">Most read</p>
+        <p class="d3-side-title">The global polytunity — Project Syndicate</p>
+        <p class="d3-side-meta">October 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d3-subscribe-bar">
+    <p>Free to subscribe · Join scholars, policymakers, and changemakers in 98 countries</p>
+    <button>Subscribe free</button>
+  </div>
+
+  <div class="d3-body">
+
+    <div class="d3-section">
+      <div class="d3-section-head">
+        <span class="d3-section-label">Yuen's essays</span>
+        <a href="#" class="d3-section-more">View all →</a>
+      </div>
+      <div class="d3-grid">
+        <div class="d3-card">
+          <p class="d3-card-tag">Deposit</p>
+          <p class="d3-card-title">From polycrisis to polytunity</p>
+          <p class="d3-card-by">Yuen Yuen Ang · March 2026</p>
+        </div>
+        <div class="d3-card">
+          <p class="d3-card-tag">Deposit</p>
+          <p class="d3-card-title">AIM for a new political economy</p>
+          <p class="d3-card-by">Yuen Yuen Ang · March 2026</p>
+        </div>
+        <div class="d3-card">
+          <p class="d3-card-tag">Deposit</p>
+          <p class="d3-card-title">The old order breaks down only once in 80 years</p>
+          <p class="d3-card-by">Yuen Yuen Ang · February 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d3-section">
+      <div class="d3-section-head">
+        <span class="d3-section-label">Gen-Z series</span>
+        <a href="#" class="d3-section-more">View all →</a>
+      </div>
+      <div class="d3-grid">
+        <div class="d3-card">
+          <p class="d3-card-tag">Student essay</p>
+          <p class="d3-card-title">Three-year plan meets the polycrisis</p>
+          <p class="d3-card-by">Ambre Clermont · April 2026</p>
+        </div>
+        <div class="d3-card">
+          <p class="d3-card-tag">Student essay</p>
+          <p class="d3-card-title">Why immigration is complex, not complicated</p>
+          <p class="d3-card-by">Lily Yan · April 2026</p>
+        </div>
+        <div class="d3-card">
+          <p class="d3-card-tag">Student essay</p>
+          <p class="d3-card-title">A tale of two kitchens</p>
+          <p class="d3-card-by">Joy Yu · April 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d3-bottom">
+      <div class="d3-mr">
+        <p class="d3-mr-title">Most read</p>
+        <div class="d3-mr-item"><span class="d3-mr-n">01</span><span class="d3-mr-text">The global polytunity</span></div>
+        <div class="d3-mr-item"><span class="d3-mr-n">02</span><span class="d3-mr-text">From polycrisis to polytunity</span></div>
+        <div class="d3-mr-item"><span class="d3-mr-n">03</span><span class="d3-mr-text">AIM for a new political economy</span></div>
+        <div class="d3-mr-item"><span class="d3-mr-n">04</span><span class="d3-mr-text">Three-year plan meets the polycrisis</span></div>
+      </div>
+      <div class="d3-appearances">
+        <p class="d3-app-title">Media &amp; appearances</p>
+        <div class="d3-app-item"><p>UNDP Global Leadership Retreat</p><span>Keynote · Nov 2024</span></div>
+        <div class="d3-app-item"><p>Project Syndicate</p><span>Essay · Oct 2025</span></div>
+        <div class="d3-app-item"><p>Oxford Development Studies</p><span>Journal · 2026</span></div>
+        <div class="d3-app-item"><p>DSA Conference keynote</p><span>June 2025</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     DESIGN 4 — INTELLECTUAL STUDIO
+══════════════════════════════════════ -->
+<div class="design-panel d4" id="panel-4">
+
+  <nav class="d4-nav">
+    <div class="d4-nav-left">
+      <div class="d4-author-block">
+        <div class="d4-avatar">YA</div>
+        <div class="d4-author-info">
+          <p class="d4-author-name">Yuen Yuen Ang</p>
+          <p class="d4-author-role">Alfred Chandler Chair Professor · Johns Hopkins University</p>
+        </div>
+      </div>
+      <div class="d4-navlinks">
+        <a href="#">Writing</a>
+        <a href="#">Books</a>
+        <a href="#">About</a>
+        <a href="#">Team</a>
+      </div>
+    </div>
+    <button class="d4-sub-btn">Subscribe free</button>
+  </nav>
+
+  <div class="d4-bio-strip">
+    <div class="d4-bio-text">
+      <p>"For twenty years my work has explored how societies adapt to disruption and transform — or when and why they get stuck. Polytunity is the lens I coined to reframe today's disruptions."</p>
+    </div>
+    <div class="d4-bio-links">
+      <p class="d4-bio-links-title">Books &amp; research</p>
+      <div class="d4-bio-link-item">
+        <p>How China Escaped the Poverty Trap</p>
+        <span>Cornell University Press · 2016</span>
+      </div>
+      <div class="d4-bio-link-item">
+        <p>China's Gilded Age</p>
+        <span>Cambridge University Press · 2020</span>
+      </div>
+      <div class="d4-bio-link-item">
+        <p>AIM Political Economy — Oxford Development Studies</p>
+        <span>Journal article · 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="d4-subscribe-bar">
+    <p>Join <strong>1,000+ readers in 98 countries</strong> — economists, policymakers, scholars, and globally curious minds. Free to subscribe.</p>
+    <button>Subscribe free</button>
+  </div>
+
+  <div class="d4-body">
+
+    <div class="d4-pinned">
+      <p class="d4-pinned-label">Pinned · Start here</p>
+      <h1 class="d4-pinned-title">What is polytunity? A reader's guide to this Substack</h1>
+      <p class="d4-pinned-deck">The entry point for new readers — what polytunity and AIM mean, who we are, and where to start. Written for the curious reader arriving here for the first time.</p>
+      <a href="#" class="d4-pinned-cta">Read the guide →</a>
+    </div>
+
+    <div class="d4-section">
+      <div class="d4-section-head">
+        <span class="d4-section-title">Yuen's essays</span>
+        <a href="#" class="d4-section-more">View all →</a>
+      </div>
+      <div class="d4-list">
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Deposit</p>
+            <p class="d4-item-title">From polycrisis to polytunity</p>
+          </div>
+          <p class="d4-item-meta">March 2026</p>
+        </div>
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Deposit</p>
+            <p class="d4-item-title">AIM for a new political economy</p>
+          </div>
+          <p class="d4-item-meta">March 2026</p>
+        </div>
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Deposit</p>
+            <p class="d4-item-title">The old order breaks down only once in 80 years</p>
+          </div>
+          <p class="d4-item-meta">February 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d4-section">
+      <div class="d4-section-head">
+        <span class="d4-section-title">Gen-Z series</span>
+        <a href="#" class="d4-section-more">View all →</a>
+      </div>
+      <div class="d4-list">
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Student essay</p>
+            <p class="d4-item-title">Three-year plan meets the polycrisis — Ambre Clermont</p>
+          </div>
+          <p class="d4-item-meta">April 2026</p>
+        </div>
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Student essay</p>
+            <p class="d4-item-title">Why immigration is complex, not complicated — Lily Yan</p>
+          </div>
+          <p class="d4-item-meta">April 2026</p>
+        </div>
+        <div class="d4-list-item">
+          <div>
+            <p class="d4-item-type">Student essay</p>
+            <p class="d4-item-title">A tale of two kitchens — Joy Yu</p>
+          </div>
+          <p class="d4-item-meta">April 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d4-bottom">
+      <div class="d4-mr">
+        <h4>Most read</h4>
+        <div class="d4-mr-item"><span class="d4-mr-n">1</span><span class="d4-mr-title">The global polytunity</span></div>
+        <div class="d4-mr-item"><span class="d4-mr-n">2</span><span class="d4-mr-title">From polycrisis to polytunity</span></div>
+        <div class="d4-mr-item"><span class="d4-mr-n">3</span><span class="d4-mr-title">AIM for a new political economy</span></div>
+        <div class="d4-mr-item"><span class="d4-mr-n">4</span><span class="d4-mr-title">Three-year plan meets the polycrisis</span></div>
+      </div>
+      <div class="d4-appearances">
+        <h4>Media &amp; appearances</h4>
+        <div class="d4-app-item">
+          <p>UNDP Global Leadership Retreat, South Africa</p>
+          <span>Keynote · November 2024</span>
+        </div>
+        <div class="d4-app-item">
+          <p>The Global Polytunity — Project Syndicate</p>
+          <span>October 2025</span>
+        </div>
+        <div class="d4-app-item">
+          <p>AIM — Oxford Development Studies</p>
+          <span>2026</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ─── FOOTER NOTE ─── -->
+<div class="footer-note">
+  <strong>Polytunity homepage design concepts</strong> — prepared for Yuen Yuen Ang · June 2026
+</div>
+
+
+<script>
+  function switchDesign(n, btn) {
+    document.querySelectorAll('.design-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + n).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 56, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
